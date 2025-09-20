@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import image1_1 from "../assets/Image2.png";
 import image1_2 from "../assets/Image3.png";
@@ -19,7 +22,6 @@ import image4_3 from "../assets/Image (15).png";
 import image5_1 from "../assets/Image (16).png";
 import image5_2 from "../assets/Image (17).png";
 import image5_3 from "../assets/Image (18).png";
-import { Link } from "react-router-dom";
 
 const courses = [
   {
@@ -105,74 +107,141 @@ const courses = [
 ];
 
 const CoursesPage = () => {
+  const [loading, setLoading] = useState(true);
+
+  // Simulate loading
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // 2 sec skeleton
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="container my-5">
       {courses.map((course, index) => (
         <div key={index} className="p-5 mb-5 bg-light rounded shadow">
+          {/* Title & Description */}
           <div className="d-flex justify-content-between align-items-start mb-3">
             <div>
-              <h5 className="fw-bold mb-1">{course.title}</h5>
-              <p className="text-muted mb-0" style={{ maxWidth: "600px" }}>
-                {course.description}
-              </p>
+              {loading ? (
+                <Skeleton width={250} height={30} />
+              ) : (
+                <h5 className="fw-bold mb-1">{course.title}</h5>
+              )}
+
+              {loading ? (
+                <Skeleton count={2} width={600} />
+              ) : (
+                <p className="text-muted mb-0" style={{ maxWidth: "600px" }}>
+                  {course.description}
+                </p>
+              )}
             </div>
             <button className="border-0 bg-light">
-              <Link
-                className="text-decoration-none text-dark"
-                to="/courses/information"
-              >
-                View Course
-              </Link>
+              {loading ? (
+                <Skeleton width={100} height={30} />
+              ) : (
+                <Link
+                  className="text-decoration-none text-dark"
+                  to="/courses/information"
+                >
+                  View Course
+                </Link>
+              )}
             </button>
           </div>
 
+          {/* Images */}
           <div
             className="d-flex gap-3 mb-3 justify-content-center"
             style={{ maxWidth: "960px", margin: "0 auto" }}
           >
-            {course.images.map((img, idx) => (
-              <img
-                key={idx}
-                src={img}
-                alt={`design ${idx + 1}`}
-                className="rounded"
-                style={{
-                  width: "390px",
-                  height: "400px",
-                  objectFit: "cover",
-                }}
-              />
-            ))}
+            {loading
+              ? [1, 2, 3].map((idx) => (
+                  <Skeleton
+                    key={idx}
+                    height={400}
+                    width={390}
+                    style={{ borderRadius: "8px" }}
+                  />
+                ))
+              : course.images.map((img, idx) => (
+                  <img
+                    key={idx}
+                    src={img}
+                    alt={`design ${idx + 1}`}
+                    className="rounded"
+                    style={{
+                      width: "390px",
+                      height: "400px",
+                      objectFit: "cover",
+                    }}
+                  />
+                ))}
           </div>
 
+          {/* Duration & Level */}
           <div className="mt-3 d-flex justify-content-between">
             <ul className="list-unstyled d-flex gap-3">
               <li>
-                <button className="btn">{course.duration}</button>
+                {loading ? (
+                  <Skeleton width={80} height={35} />
+                ) : (
+                  <button className="btn">{course.duration}</button>
+                )}
               </li>
               <li>
-                <button className="btn">{course.level}</button>
+                {loading ? (
+                  <Skeleton width={100} height={35} />
+                ) : (
+                  <button className="btn">{course.level}</button>
+                )}
               </li>
             </ul>
-            <h4>By {course.author}</h4>
+
+            {loading ? (
+              <Skeleton width={120} height={30} />
+            ) : (
+              <h4>By {course.author}</h4>
+            )}
           </div>
 
-          <div className="border rounded p-3 bg-white">
-            <h3 className="fw-bold mb-3">Curriculum</h3>
-            <div className="d-flex justify-content-center">
-              <ul className="d-flex gap-3 justify-content-start list-unstyled flex-nowrap overflow-auto">
-                {course.curriculum.map((item, idx) => (
-                  <li key={idx} className=" px-5 py-3 rounded mb-2 border">
-                    <div>
-                      <div className="fs-1 fw-bold">
-                        {String(idx + 1).padStart(2, "0")}
-                      </div>
-                      <div>{item}</div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {/* Curriculum */}
+          <div className="border rounded p-3 bg-white mt-3">
+            {loading ? (
+              <>
+                <Skeleton width={150} height={30} />
+                <div className="d-flex gap-3 mt-3">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <Skeleton
+                      key={i}
+                      height={100}
+                      width={120}
+                      style={{ borderRadius: "8px" }}
+                    />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <>
+                <h3 className="fw-bold mb-3">Curriculum</h3>
+                <div className="d-flex justify-content-center">
+                  <ul className="d-flex gap-3 justify-content-start list-unstyled flex-nowrap overflow-auto">
+                    {course.curriculum.map((item, idx) => (
+                      <li key={idx} className="px-5 py-3 rounded mb-2 border">
+                        <div>
+                          <div className="fs-1 fw-bold">
+                            {String(idx + 1).padStart(2, "0")}
+                          </div>
+                          <div>{item}</div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </>
+            )}
           </div>
         </div>
       ))}

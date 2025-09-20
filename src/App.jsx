@@ -1,8 +1,18 @@
 import React from "react";
-import "./sass/main.scss";
+import Header from "./components/Header/Header";
+import { Outlet } from "react-router-dom";
+import Footer from "./components/Footer/Footer";
+import CursorGlow from "./components/CursorGlow/CursorGlow";
 
 const App = () => {
-  return <div>App</div>;
+  return (
+    <>
+      <CursorGlow />
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
+  );
 };
 
 export default App;

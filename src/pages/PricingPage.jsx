@@ -1,5 +1,4 @@
 import { BsFillXCircleFill } from "react-icons/bs";
-import { VscError } from "react-icons/vsc";
 import { AiFillCheckCircle } from "react-icons/ai";
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";

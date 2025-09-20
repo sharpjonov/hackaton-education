@@ -59,7 +59,6 @@ const CursorGlow = () => {
 
   return (
     <>
-      {/* Outer glow layer */}
       <div
         style={{
           position: "fixed",
@@ -84,7 +83,6 @@ const CursorGlow = () => {
         }}
       />
 
-      {/* Main glow */}
       <div
         style={{
           position: "fixed",
@@ -110,7 +108,6 @@ const CursorGlow = () => {
         }}
       />
 
-      {/* Inner bright core */}
       <div
         style={{
           position: "fixed",
@@ -140,7 +137,6 @@ const CursorGlow = () => {
         }}
       />
 
-      {/* Click ripple effect */}
       {clicked && (
         <div
           style={{
@@ -160,7 +156,6 @@ const CursorGlow = () => {
         />
       )}
 
-      {/* Sparkle particles on click */}
       {clicked &&
         Array.from({ length: 6 }).map((_, i) => (
           <div
@@ -181,7 +176,7 @@ const CursorGlow = () => {
           />
         ))}
 
-      <style jsx>{`
+      <style>{`
         @keyframes ripple {
           0% {
             transform: translate(${position.x - 80}px, ${position.y - 80}px)

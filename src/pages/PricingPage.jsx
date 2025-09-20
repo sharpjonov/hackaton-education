@@ -2,7 +2,7 @@ import { BsFillXCircleFill } from "react-icons/bs";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import FAQSection from "../components/FaqSection";
+import FAQSectionn from "../components/FaqSection";
 
 const PricingPage = () => {
   const [billing, setBilling] = useState("monthly");
@@ -186,7 +186,7 @@ const PricingPage = () => {
           </div>
         </div>
       </section>
-      <FAQSection />
+      <FAQSectionn />
     </>
   );
 };

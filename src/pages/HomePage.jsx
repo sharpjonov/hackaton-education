@@ -9,7 +9,7 @@ import Log5 from "../assets/Log5.svg";
 import Log6 from "../assets/Log6.svg";
 import Log7 from "../assets/Log7.svg";
 
-import Img1 from "../assets/Img1.svg";
+import Img1 from "../assets/img1.svg";
 import Img2 from "../assets/Img2.svg";
 import Img3 from "../assets/Img3.svg";
 import Img4 from "../assets/Img4.svg";
@@ -21,7 +21,7 @@ import Jason from "../assets/Jason.svg";
 import Emily from "../assets/Emily.svg";
 import Michael from "../assets/Michael.svg";
 
-function HeroSection() {
+function HeroPage() {
   const location = useLocation();
 
   const [visibleCount, setVisibleCount] = useState(6);
@@ -937,4 +937,4 @@ function HeroSection() {
   );
 }
 
-export default HeroSection;
+export default HeroPage;

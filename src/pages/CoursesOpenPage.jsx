@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PremiumVideo from "../components/PremiumVideo";
 
 const PremiumCourseCards = () => {
   const [activeCard, setActiveCard] = useState(null);
@@ -649,9 +650,134 @@ const PremiumCourseCards = () => {
             box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
           }
         }
-      `}</style>
 
-      <div className="courses-container">
+.video-container {
+  position: relative;
+  max-width: 900px;
+  margin: 2rem auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #000;
+  z-index: 5;
+}
+
+.video-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.5);
+}
+
+.video-container video {
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+  outline: none;
+  background-color: #000;
+  object-fit: cover;
+}
+
+.video-container video::-webkit-media-controls-panel {
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 0 0 20px 20px;
+}
+
+.video-container video::-webkit-media-controls-play-button,
+.video-container video::-webkit-media-controls-pause-button {
+  color: white;
+}
+
+.video-container video::-webkit-media-controls-timeline {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  height: 4px;
+}
+
+.video-container video::-webkit-media-controls-volume-slider {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.video-overlay-title {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 1.5rem;
+  color: white;
+  font-weight: 600;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.video-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255, 165, 0, 0.4), rgba(255, 69, 0, 0.4));
+  filter: blur(30px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.video-container:hover::before {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .video-container {
+    max-width: 100%;
+    margin: 1.5rem;
+    border-radius: 15px;
+  }
+
+  .video-overlay-title {
+    font-size: 1.2rem;
+  }
+}
+
+      `}</style>
+      <div className="container">
+        <div
+          className="d-flex flex-column flex-lg-row align-items-center justify-content-between text-center text-lg-start mb-5"
+          style={{
+            padding: "100px 0",
+            gap: "40px",
+          }}
+        >
+          <div className="col-lg-5">
+            <h1 className="fw-bold display-5 text-dark mb-3">
+              UI/UX <span className="text-warning">Design</span> Course
+            </h1>
+            <p className="text-muted fs-5">
+              Choose the perfect plan for your journey. Whether you're just
+              getting started or looking to scale, our flexible options are
+              designed to fit your goals and budget.
+            </p>
+          </div>
+
+          <div className="col-lg-6">
+            <div
+              className="bg-white shadow rounded p-4 border-start border-4 border-warning"
+              style={{ maxWidth: "500px", margin: "0 auto" }}
+            >
+              <p className="text-muted">
+                Welcome to our UI/UX Design course! This comprehensive program
+                will equip you with the knowledge and skills to create
+                exceptional user interfaces (UI) and enhance user experiences
+                (UX). Dive into the world of design thinking, wireframing,
+                prototyping, and usability testing. Below is an overview of the
+                curriculum
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <PremiumVideo />
+
+      <div className="container">
         <div className="floating-particles">
           <div className="particle"></div>
           <div className="particle"></div>

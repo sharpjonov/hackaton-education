@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 body {
   margin: 0;
   padding: 0;
+  font-family: "Be Vietnam Pro", sans-serif;
   cursor: url("./assets/cursor-icon.png"), auto;
 }
 
@@ -30,4 +33,49 @@ body {
 * {
   scrollbar-width: thin;
   scrollbar-color: orange #f1f1f1;
+}
+
+.logo-track {
+  animation: scroll 30s linear infinite;
+  white-space: nowrap;
+}
+
+.logo-img {
+  height: 40px;
+  opacity: 0.7;
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
+}
+
+.logo-img:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(1.05);
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.logo-track:hover {
+  animation-play-state: paused;
+}
+
+.btn-see:hover {
+  color: white;
+  background-color: orange;
+}
+
+.btn-outline-warning {
+  transition: 0.3s ease-in-out;
+}
+
+.btn-outline-warning:hover {
+  color: orange !important;
+  background-color: transparent;
 }

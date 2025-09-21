@@ -731,7 +731,7 @@ const PremiumAchievementsSection = () => {
 
       <div className="cta-section">
         <div className="cta-content">
-          <h2 className="cta-title">
+          <h2 className="cta-title text-white">
             <span className="highlight">Together</span>, let's shape the future
             of digital innovation
           </h2>

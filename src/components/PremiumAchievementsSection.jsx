@@ -1,3 +1,7 @@
+import { MdHandshake } from "react-icons/md";
+import { AiFillMessage } from "react-icons/ai";
+import { FaTrophy } from "react-icons/fa";
+import { FaCrown } from "react-icons/fa";
 import React, { useState, useEffect, useRef } from "react";
 
 const PremiumAchievementsSection = () => {
@@ -10,7 +14,7 @@ const PremiumAchievementsSection = () => {
   const achievements = [
     {
       id: 1,
-      icon: "👑",
+      icon: <FaCrown style={{ color: "yellow" }} />,
       title: "Trusted by Thousands",
       description:
         "We have successfully served thousands of students, helping them unlock their potential and achieve their career goals.",
@@ -20,7 +24,7 @@ const PremiumAchievementsSection = () => {
     },
     {
       id: 2,
-      icon: "🏆",
+      icon: <FaTrophy style={{ color: "yellow" }} />,
       title: "Award-Winning Courses",
       description:
         "Our courses have received recognition and accolades in the industry for their quality, depth of content, and effective teaching methodologies.",
@@ -30,7 +34,7 @@ const PremiumAchievementsSection = () => {
     },
     {
       id: 3,
-      icon: "💬",
+      icon: <AiFillMessage style={{ color: "wheat" }} />,
       title: "Positive Student Feedback",
       description:
         "We take pride in the positive feedback we receive from our students, who appreciate the practicality and relevance of our course materials.",
@@ -40,7 +44,7 @@ const PremiumAchievementsSection = () => {
     },
     {
       id: 4,
-      icon: "🤝",
+      icon: <MdHandshake style={{ color: "yellow" }} />,
       title: "Industry Partnerships",
       description:
         "We have established strong partnerships with industry leaders, enabling us to provide our students with access to the latest tools and technologies.",
@@ -96,20 +100,20 @@ const PremiumAchievementsSection = () => {
 
   return (
     <div ref={sectionRef} className="premium-section">
-      <style jsx>{`
+      <style>{`
         .premium-section {
           min-height: 100vh;
-          background: radial-gradient(
-              circle at 20% 20%,
-              rgba(255, 107, 53, 0.1) 0%,
-              transparent 50%
-            ),
-            radial-gradient(
-              circle at 80% 80%,
-              rgba(74, 144, 226, 0.1) 0%,
-              transparent 50%
-            ),
-            linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            background: radial-gradient(
+                circle at 20% 20%,
+                rgba(255, 107, 53, 0.1) 0%,
+                transparent 50%
+                ),
+                radial-gradient(
+                circle at 80% 80%,
+                rgba(74, 144, 226, 0.1) 0%,
+                transparent 50%
+                ),
+                linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
           position: relative;
           overflow: hidden;
           padding: 6rem 2rem;

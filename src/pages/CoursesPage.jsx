@@ -3,23 +3,18 @@ import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
-import image1_1 from "../assets/Image2.png";
 import image1_2 from "../assets/Image3.png";
 import image1_3 from "../assets/Image4.png";
 
-import image2_1 from "../assets/Image (6).png";
 import image2_2 from "../assets/Image (7).png";
 import image2_3 from "../assets/Image (8).png";
 
-import image3_1 from "../assets/Image (10).png";
 import image3_2 from "../assets/Image (11).png";
 import image3_3 from "../assets/Image (12).png";
 
-import image4_1 from "../assets/Image (13).png";
 import image4_2 from "../assets/Image (14).png";
 import image4_3 from "../assets/Image (15).png";
 
-import image5_1 from "../assets/Image (16).png";
 import image5_2 from "../assets/Image (17).png";
 import image5_3 from "../assets/Image (18).png";
 
@@ -28,7 +23,7 @@ const courses = [
     title: "Web Design Fundamentals",
     description:
       "Learn the fundamentals of web design, including HTML, CSS, and responsive design principles. Develop the skills to create visually appealing and user-friendly websites.",
-    images: [image1_1, image1_2, image1_3],
+    images: [image1_2, image1_3],
     duration: "4 Weeks",
     level: "Beginners",
     author: "John Smith",
@@ -44,7 +39,7 @@ const courses = [
     title: "UI/UX Design",
     description:
       "Master the art of creating intuitive user interfaces (UI) and enhancing user experiences (UX). Learn design principles, wireframing, prototyping, and usability testing techniques.",
-    images: [image2_1, image2_2, image2_3],
+    images: [image2_2, image2_3],
     duration: "6 Weeks",
     level: "Intermediate",
     author: "Emily Johnson",
@@ -60,7 +55,7 @@ const courses = [
     title: "Mobile App Development",
     description:
       "Dive into the world of mobile app development. Learn to build native iOS and Android applications using industry-leading frameworks like Swift and Kotlin.",
-    images: [image3_1, image3_2, image3_3],
+    images: [image3_2, image3_3],
     duration: "8 Weeks",
     level: "Intermediate",
     author: "David Brown",
@@ -76,7 +71,7 @@ const courses = [
     title: "Graphic Design for Beginners",
     description:
       "Discover the fundamentals of graphic design, including typography, color theory, layout design, and image manipulation techniques. Create visually stunning designs for print and digital media.",
-    images: [image4_1, image4_2, image4_3],
+    images: [image4_2, image4_3],
     duration: "10 Weeks",
     level: "Beginner",
     author: "Sarah Thompson",
@@ -92,7 +87,7 @@ const courses = [
     title: "Front-End Web Development",
     description:
       "Become proficient in front-end web development. Learn HTML, CSS, JavaScript, and popular frameworks like Bootstrap and React. Build interactive and responsive websites.",
-    images: [image5_1, image5_2, image5_3],
+    images: [image5_2, image5_3],
     duration: "10 Weeks",
     level: "Intermediate",
     author: "Michael Adams",
@@ -109,11 +104,10 @@ const courses = [
 const CoursesPage = () => {
   const [loading, setLoading] = useState(true);
 
-  // Simulate loading
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000); // 2 sec skeleton
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -121,7 +115,6 @@ const CoursesPage = () => {
     <div className="container my-5">
       {courses.map((course, index) => (
         <div key={index} className="p-5 mb-5 bg-light rounded shadow">
-          {/* Title & Description */}
           <div className="d-flex justify-content-between align-items-start mb-3">
             <div>
               {loading ? (
@@ -152,7 +145,6 @@ const CoursesPage = () => {
             </button>
           </div>
 
-          {/* Images */}
           <div
             className="d-flex gap-3 mb-3 justify-content-center"
             style={{ maxWidth: "960px", margin: "0 auto" }}
@@ -181,7 +173,6 @@ const CoursesPage = () => {
                 ))}
           </div>
 
-          {/* Duration & Level */}
           <div className="mt-3 d-flex justify-content-between">
             <ul className="list-unstyled d-flex gap-3">
               <li>
@@ -207,7 +198,6 @@ const CoursesPage = () => {
             )}
           </div>
 
-          {/* Curriculum */}
           <div className="border rounded p-3 bg-white mt-3">
             {loading ? (
               <>

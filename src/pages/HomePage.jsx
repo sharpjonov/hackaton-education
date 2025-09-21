@@ -492,30 +492,12 @@ function HeroPage() {
       <div className="container py-5">
         <div className="d-flex justify-content-between align-items-start mb-5">
           <div style={{ maxWidth: "600px" }}>
-            <h2 className="fw-bold text-dark mb-3">Our Pricing</h2>
+            <h2 className="fw-bold text-dark mb-3">Free Education</h2>
             <p className="text-muted mb-0">
-              Lorem ipsum dolor sit amet consectetur. Tempus tincidunt etiam
-              eget elit id imperdiet et. Cras eu sit dignissim lorem nibh et. Ac
-              cum eget habitasse in velit fringilla feugiat senectus in.
+              Free education provides opportunities for everyone to learn and
+              grow without financial barriers. Our mission is to make quality
+              learning accessible to all.
             </p>
-          </div>
-          <div className="d-flex bg-light rounded p-1">
-            <button
-              className={`btn px-3 py-2 ${
-                isMonthly ? "btn-warning text-white" : "btn-light text-dark"
-              }`}
-              onClick={() => setIsMonthly(true)}
-            >
-              Monthly
-            </button>
-            <button
-              className={`btn px-3 py-2 ${
-                !isMonthly ? "btn-warning text-white" : "btn-light text-dark"
-              }`}
-              onClick={() => setIsMonthly(false)}
-            >
-              Yearly
-            </button>
           </div>
         </div>
 

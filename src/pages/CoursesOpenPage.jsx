@@ -21,12 +21,12 @@ const PremiumCourseCards = () => {
     {
       id: 1,
       number: "01",
-      title: "Introduction to UI/UX Design",
+      title: "Web Development",
       theme: "purple",
       gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
       lessons: [
         {
-          title: "Understanding UI/UX Design Principles",
+          title: "Understanding UI/UX Principles",
           lesson: "Lesson 01",
           duration: "45 Minutes",
           type: "basic",
@@ -75,7 +75,7 @@ const PremiumCourseCards = () => {
     {
       id: 3,
       number: "03",
-      title: "User Research & Testing",
+      title: "Cyber Security",
       theme: "green",
       gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
       lessons: [
@@ -270,7 +270,7 @@ const PremiumCourseCards = () => {
           position: relative;
           z-index: 2;
           max-width: 1400px;
-          margin: 0 auto;
+          margin: 20px auto 40px auto;
         }
 
         .course-card {

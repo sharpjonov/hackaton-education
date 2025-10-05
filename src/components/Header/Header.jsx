@@ -1,15 +1,18 @@
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import LogoIcon from "../../assets/arrow.png";
-import Logo from "../../assets/Logo.svg";
-import "../Header/header.css";
+import LogoIcon from "../../assets/arrow.png"
+import Logo from "../../assets/Logo.svg"
+import "./Header.css";
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <header>
       <div className="container">
         <div className="head_inner">
           <div className="head_inner_top">
-            <Link to={"/courses/information"} className="head_inner_top_link">
+            <Link to={"/coursesopenpage"} className="head_inner_top_link">
               Free Courses 🌟 Sale Ends Soon, Get It Now
               <span>
                 <img width={24} height={24} src={LogoIcon} alt="arrow" />
@@ -34,7 +37,7 @@ const Header = () => {
                 </li>
                 <li className="head_inner_bottom_left_list_item">
                   <NavLink
-                    to="/courses"
+                    to="/coursesopenpage"
                     className={({ isActive }) => (isActive ? "active" : "")}
                   >
                     Courses
@@ -64,6 +67,22 @@ const Header = () => {
                     Contact
                   </NavLink>
                 </li>
+                <li className="head_inner_bottom_left_list_item">
+                  <NavLink
+                    to="/usercard"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    User Card
+                  </NavLink>
+                </li>
+                <li className="head_inner_bottom_left_list_item">
+                  <NavLink
+                    to="/map"
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
+                    Our Brenches
+                  </NavLink>
+                </li>
               </ul>
             </div>
             <div className="head_inner_bottom_right">
@@ -86,7 +105,57 @@ const Header = () => {
                 </li>
               </ul>
             </div>
+            <div
+              className="burger"
+              onClick={() => setMenuOpen((prev) => !prev)}
+              aria-label="Toggle menu"
+            >
+              <span style={{ transform: menuOpen ? "rotate(45deg) translate(6px, 6px)" : "" }} />
+              <span style={{ opacity: menuOpen ? 0 : 1 }} />
+              <span style={{ transform: menuOpen ? "rotate(-45deg) translate(7px, -7px)" : "" }} />
+            </div>
           </div>
+          {menuOpen && (
+            <nav className="mobile_menu">
+              <ul>
+                <li>
+                  <NavLink to="/" onClick={() => setMenuOpen(false)}>
+                    Home
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/about" onClick={() => setMenuOpen(false)}>
+                    About Us
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/pricing" onClick={() => setMenuOpen(false)}>
+                    Pricing
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/contact" onClick={() => setMenuOpen(false)}>
+                    Contact
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/games" onClick={() => setMenuOpen(false)}>
+                    Games
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/signup" onClick={() => setMenuOpen(false)}>
+                    Sign Up
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/login" onClick={() => setMenuOpen(false)}>
+                    Login
+                  </NavLink>
+                </li>
+              </ul>
+            </nav>
+          )}
         </div>
       </div>
     </header>

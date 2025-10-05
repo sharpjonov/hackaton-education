@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Mail,
   Phone,
@@ -38,20 +38,44 @@ const ContactPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        subject: "",
-        message: "",
+    try {
+      const response = await fetch("https://formspree.io/f/mblzkorv", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+        }),
       });
 
-      setTimeout(() => setIsSubmitted(false), 3000);
-    }, 2000);
+      if (response.ok) {
+        setIsSubmitted(true);
+        setFormData({
+          firstName: "",
+          lastName: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+
+        });
+        setTimeout(() => setIsSubmitted(false), 4000);
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      alert("Failed to send message. Please try again later.");
+      console.error(error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -86,7 +110,7 @@ const ContactPage = () => {
 
   return (
     <div className="bg-white">
-      <style jsx>{`
+      <style>{`
         .floating-animation {
           animation: float 6s ease-in-out infinite;
         }
@@ -210,8 +234,7 @@ const ContactPage = () => {
       <div
         className="container-fluid py-5"
         style={{
-          background:
-            "linear-gradient(135deg, rgba(255,193,7,0.1) 0%, rgba(255,143,0,0.05) 100%)",
+
         }}
       >
         <div className="container">
@@ -306,11 +329,10 @@ const ContactPage = () => {
                         </label>
                         <div className="position-relative">
                           <User
-                            className={`input-icon ${
-                              focusedField === "firstName" || formData.firstName
-                                ? "text-warning"
-                                : "text-muted"
-                            }`}
+                            className={`input-icon ${focusedField === "firstName" || formData.firstName
+                              ? "text-warning"
+                              : "text-muted"
+                              }`}
                             size={18}
                           />
                           <input
@@ -331,11 +353,10 @@ const ContactPage = () => {
                         </label>
                         <div className="position-relative">
                           <User
-                            className={`input-icon ${
-                              focusedField === "lastName" || formData.lastName
-                                ? "text-warning"
-                                : "text-muted"
-                            }`}
+                            className={`input-icon ${focusedField === "lastName" || formData.lastName
+                              ? "text-warning"
+                              : "text-muted"
+                              }`}
                             size={18}
                           />
                           <input
@@ -357,11 +378,10 @@ const ContactPage = () => {
                         <label className="form-label fw-semibold">Email</label>
                         <div className="position-relative">
                           <Mail
-                            className={`input-icon ${
-                              focusedField === "email" || formData.email
-                                ? "text-warning"
-                                : "text-muted"
-                            }`}
+                            className={`input-icon ${focusedField === "email" || formData.email
+                              ? "text-warning"
+                              : "text-muted"
+                              }`}
                             size={18}
                           />
                           <input
@@ -380,11 +400,10 @@ const ContactPage = () => {
                         <label className="form-label fw-semibold">Phone</label>
                         <div className="position-relative">
                           <Phone
-                            className={`input-icon ${
-                              focusedField === "phone" || formData.phone
-                                ? "text-warning"
-                                : "text-muted"
-                            }`}
+                            className={`input-icon ${focusedField === "phone" || formData.phone
+                              ? "text-warning"
+                              : "text-muted"
+                              }`}
                             size={18}
                           />
                           <input
@@ -427,7 +446,7 @@ const ContactPage = () => {
                         rows={5}
                         className="form-control form-control-modern"
                         placeholder="Enter your Message here..."
-                        style={{ paddingLeft: "15px" }}
+                        style={{ paddingLeft: "15px", resize: "none" }}
                       />
                     </div>
 
@@ -503,9 +522,7 @@ const ContactPage = () => {
 
       <div
         className="container-fluid py-5 mt-5"
-        style={{
-          background: "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
-        }}
+
       >
         <div className="container">
           <div className="row justify-content-center">

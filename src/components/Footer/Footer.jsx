@@ -1,158 +1,95 @@
-import { AiFillInstagram } from "react-icons/ai";
-import { BsTelegram } from "react-icons/bs";
-import { AiFillLinkedin } from "react-icons/ai";
-import { AiFillGithub } from "react-icons/ai";
-import { FaFacebook } from "react-icons/fa";
-import { HiLocationMarker } from "react-icons/hi";
-import { BsFillTelephoneFill } from "react-icons/bs";
+import React, { useState } from "react";
+import { AiFillInstagram, AiFillLinkedin } from "react-icons/ai";
+import { BsTelegram, BsFillTelephoneFill } from "react-icons/bs";
 import { GrMail } from "react-icons/gr";
-import React from "react";
+import { HiLocationMarker } from "react-icons/hi";
 import "./footer.css";
 import logo from "../../assets/Logo.svg";
 
 const Footer = () => {
+  const [openSections, setOpenSections] = useState({
+    home: false,
+    about: false,
+  });
+
+  const toggleSection = (section) => {
+    setOpenSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
+
   return (
-    <>
-      <footer>
-        <div className="container">
-          <div className="footer__inner">
-            <div className="footer__logo">
-              <img className="footer__logo-icon" src={logo} alt="" />
-              <ul className="footer__contact">
-                <li className="footer__contact-item">
-                  <GrMail
-                    className="footer__contact-icon"
-                    style={{ color: "black" }}
-                  />
-                  <span
-                    style={{
-                      color: "black",
-                      fontWeight: "400",
-                      fontSize: "16px",
-                      lineHeight: "150%",
-                    }}
-                  >
-                    hello@skillbridge.com
-                  </span>
-                </li>
-                <li className="footer__contact-item">
-                  <BsFillTelephoneFill
-                    style={{ color: "black" }}
-                    className="footer__contact-icon"
-                  />
-                  <span
-                    style={{
-                      color: "black",
-                      fontWeight: "400",
-                      fontSize: "16px",
-                      lineHeight: "150%",
-                    }}
-                  >
-                    +91 91813 23 2309
-                  </span>
-                </li>
-                <li className="footer__contact-item">
-                  <HiLocationMarker
-                    className="footer__contact-icon"
-                    style={{ color: "black" }}
-                  />
-                  <span
-                    style={{
-                      color: "black",
-                      fontWeight: "400",
-                      fontSize: "16px",
-                      lineHeight: "150%",
-                    }}
-                  >
-                    Somewhere in the World
-                  </span>
-                </li>
+    <footer>
+      <div className="container">
+        <div className="footer__inner">
+          {/* Logo va Contact */}
+          <div className="footer__logo">
+            <img className="footer__logo-icon" src={logo} alt="Logo" />
+            <ul className="footer__contact">
+              <li><GrMail /> e-learning@gmail.com</li>
+              <li><BsFillTelephoneFill /> +77 070 70 71</li>
+              <li><HiLocationMarker /> Somewhere in the World</li>
+            </ul>
+          </div>
+
+          {/* Home & About */}
+          <div className="footer__links">
+            <div>
+              <h3
+                className="footer__title clickable"
+                onClick={() => toggleSection("home")}
+              >
+                Home
+              </h3>
+              <ul
+                className={`footer__nav ${
+                  openSections.home ? "footer__nav--visible" : ""
+                }`}
+              >
+                <li><a href="/">Benefits</a></li>
+                <li><a href="/">Our Clients</a></li>
+                <li><a href="/">Our Testimonials</a></li>
+                <li><a href="/">Our FAQ</a></li>
               </ul>
             </div>
 
-            <div className="footer__section">
-              <h3 className="footer__title">Home</h3>
-              <ul className="footer__nav">
-                <li className="footer__nav-item">
-                  <a href="/" className="footer__nav-link">
-                    Benefits
-                  </a>
-                </li>
-                <li className="footer__nav-item">
-                  <a href="/" className="footer__nav-link">
-                    Our Clients
-                  </a>
-                </li>
-                <li className="footer__nav-item">
-                  <a href="/" className="footer__nav-link">
-                    Our Testimonials
-                  </a>
-                </li>
-                <li className="footer__nav-item">
-                  <a href="/" className="footer__nav-link">
-                    Our FAQ
-                  </a>
-                </li>
+            <div>
+              <h3
+                className="footer__title clickable"
+                onClick={() => toggleSection("about")}
+              >
+                About Us
+              </h3>
+              <ul
+                className={`footer__nav ${
+                  openSections.about ? "footer__nav--visible" : ""
+                }`}
+              >
+                <li><a href="/">Company</a></li>
+                <li><a href="/">Achievements</a></li>
+                <li><a href="/">Our Goals</a></li>
               </ul>
-            </div>
-
-            <div className="footer__section">
-              <h3 className="footer__title">About Us</h3>
-              <ul className="footer__nav">
-                <li className="footer__nav-item">
-                  <a href="/" className="footer__nav-link">
-                    Company
-                  </a>
-                </li>
-                <li className="footer__nav-item">
-                  <a href="/" className="footer__nav-link">
-                    Achievements
-                  </a>
-                </li>
-                <li className="footer__nav-item">
-                  <a href="/" className="footer__nav-link">
-                    Our Goals
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="footer__section">
-              <h3 className="footer__title">Social Profiles</h3>
-              <div className="footer__social">
-                <a
-                  href="https://telegram.org/"
-                  className="footer__social-link telegram"
-                  target="_blanket"
-                >
-                  <BsTelegram className="footer__social-icon" />
-                </a>
-                <a
-                  href="https://www.instagram.com/"
-                  className="footer__social-link instagram"
-                  target="_blanket"
-                >
-                  <AiFillInstagram className="footer__social-icon" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/"
-                  className="footer__social-link linkedin"
-                  target="_blanket"
-                >
-                  <AiFillLinkedin className="footer__social-icon" />
-                </a>
-              </div>
             </div>
           </div>
 
-          <div className="footer__divider"></div>
-
-          <div className="footer__copyright">
-            <p>© 2023 Skillbridge. All rights reserved.</p>
+          <div className="footer__socials">
+            <h3 className="footer__title">Social Profiles</h3>
+            <div className="footer__icons">
+              <a href="https://telegram.org/" target="_blank" rel="noreferrer"><BsTelegram /></a>
+              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer"><AiFillInstagram /></a>
+              <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><AiFillLinkedin /></a>
+            </div>
           </div>
         </div>
-      </footer>
-    </>
+
+        <div className="footer__divider"></div>
+
+        <p className="footer__copyright">
+          © 2023 Skillbridge. All rights reserved.
+        </p>
+      </div>
+    </footer>
   );
 };
 

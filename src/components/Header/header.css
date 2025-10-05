@@ -242,3 +242,68 @@ header {
     justify-content: center;
   }
 }
+
+/* ...existing code... */
+
+/* Burger menu styles */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  z-index: 100;
+  margin-left: 12px;
+}
+.burger span {
+  height: 4px;
+  width: 100%;
+  background: #ff6600;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.3s;
+  display: block;
+}
+
+/* Mobile menu */
+.mobile_menu {
+  display: none;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  border-radius: 0 0 12px 12px;
+  z-index: 99;
+  padding: 20px 0;
+}
+.mobile_menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.mobile_menu li {
+  margin: 16px 0;
+  text-align: center;
+}
+.mobile_menu a {
+  color: #333;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .head_inner_bottom_left_list,
+  .head_inner_bottom_right_list {
+    display: none;
+  }
+  .burger {
+    display: flex;
+  }
+  .mobile_menu {
+    display: block;
+  }
+}

@@ -160,7 +160,7 @@ const PricingPage = () => {
                   <ul className="list-unstyled mt-3 mb-4">
                     <li>
                       <AiFillCheckCircle style={{ color: "#ff8c00" }} />{" "}
-                      Unlimited course access
+                      User Card
                     </li>
                     <li>
                       <AiFillCheckCircle style={{ color: "#ff8c00" }} />{" "}
